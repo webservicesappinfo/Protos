@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "CompanyService.Protos";
+
+package company;
+
+service Company {
+  rpc AddCompany(AddCompanyRequest ) returns (AddCompanyReply);
+  rpc GetCompanies(GetCompaniesRequest ) returns (GetCompaniesReply);
+  rpc GetCompany (GetCompanyRequest) returns (GetCompanyReply);
+  rpc UpdateCompany(UpdateCompanyRequest ) returns (UpdateCompanyReply);
+  rpc RemoveCompany(RemoveCompanyRequest ) returns (RemoveCompanyReply);
+}
+
+message GetCompanyRequest {
+  string guid = 1;
+}
+message GetCompanyReply {
+  string name = 1;
+  string guid = 2;
+}
+
+message GetCompaniesRequest {
+  string userGuid = 1;
+  bool owner = 2;
+}
+message GetCompaniesReply {
+  repeated string names = 1;
+}
+
+message AddCompanyRequest {
+  string name = 1;
+  string userGuid = 2;
+}
+message AddCompanyReply {
+  bool result  = 1;
+}
+
+message UpdateCompanyRequest {
+  string guid = 1;
+  string name = 2;
+  string token = 3;
+}
+message UpdateCompanyReply {
+  bool result = 1;
+}
+
+message RemoveCompanyRequest {
+  string guid = 1;
+}
+message RemoveCompanyReply {
+  bool result = 1;
+}
