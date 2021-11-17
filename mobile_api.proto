@@ -1,6 +1,7 @@
 syntax = "proto3";
 
 import "user.proto";
+import "company.proto";
 
 option csharp_namespace = "MobileApiGetway";
 
@@ -11,12 +12,12 @@ service MobileApi{
   // UserRepoService
 	rpc ApiAddUser(user.AddUserRequest) returns (user.AddUserReply);
 	rpc ApiGetUser (user.GetUserRequest) returns (user.GetUserReply);
-    rpc ApiGetUsers(user.GetUsersRequest ) returns (user.GetUsersReply );
+	rpc ApiGetUsers(user.GetUsersRequest ) returns (user.GetUsersReply );
 
 	// CompanyService
-	rpc ApiAddCompany(ApiAddCompanyRequest) returns (ApiAddCompanyReply);
-	rpc ApiGetCompany (ApiGetCompanyRequest) returns (ApiGetCompanyReply);
-    rpc ApiGetCompanies(ApiGetCompaniesRequest ) returns (ApiGetCompaniesReply );
+	rpc ApiAddCompany(company.AddCompanyRequest) returns (company.AddCompanyReply);
+	rpc ApiGetCompany (company.GetCompanyRequest) returns (company.GetCompanyReply);
+	rpc ApiGetCompanies(company.GetCompaniesRequest ) returns (company.GetCompaniesReply );
 
 	//NotificationService
 	rpc ApiSendMessage(ApiSendMessageRequest) returns (ApiSendMessageReply);
@@ -25,31 +26,6 @@ service MobileApi{
 	//LocationService
 	rpc ApiGetUserLocation(ApiGetUserLocationRequest) returns (ApiGetUserLocationReply);
 	rpc ApiSetUserLocation(ApiSetUserLocationRequest) returns (ApiSetUserLocationReply);
-}
-
-// CompanyService
-message ApiAddCompanyRequest {
-  string guid = 1;
-  string name = 2;
-  string token = 3;
-}
-message ApiAddCompanyReply {
-  bool result = 1;
-}
-
-message ApiGetCompanyRequest {
-  string guid = 1;
-}
-message ApiGetCompanyReply {
-  string name = 1;
-  string guid = 2;
-}
-
-message ApiGetCompaniesRequest {
-  string restriction = 1;
-}
-message ApiGetCompaniesReply {
-  repeated string names = 1;
 }
 
 //NotificationService
