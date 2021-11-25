@@ -13,11 +13,14 @@ service MobileApi{
 	rpc ApiAddUser(user.AddUserRequest) returns (user.AddUserReply);
 	rpc ApiGetUser (user.GetUserRequest) returns (user.GetUserReply);
 	rpc ApiGetUsers(user.GetUsersRequest ) returns (user.GetUsersReply );
+	rpc ApiDelUser(user.DelUserRequest ) returns (user.DelUserReply );
 
 	// CompanyService
 	rpc ApiAddCompany(company.AddCompanyRequest) returns (company.AddCompanyReply);
+	rpc ApiJoinToCompany(company.JoinToCompanyRequest) returns (company.JoinToCompanyReply);
 	rpc ApiGetCompany (company.GetCompanyRequest) returns (company.GetCompanyReply);
 	rpc ApiGetCompanies(company.GetCompaniesRequest ) returns (company.GetCompaniesReply );
+	rpc ApiDelCompany(company.DelCompanyRequest ) returns (company.DelCompanyReply );
 
 	//NotificationService
 	rpc ApiSendMessage(ApiSendMessageRequest) returns (ApiSendMessageReply);

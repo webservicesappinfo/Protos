@@ -9,15 +9,15 @@ service User {
   rpc AddUser(AddUserRequest ) returns (AddUserReply);
   rpc GetUsers(GetUsersRequest ) returns (GetUsersReply);
   rpc UpdateUser(UpdateUserRequest ) returns (UpdateUserReply);
-  rpc RemoveUser(RemoveUserRequest ) returns (RemoveUserReply);
+  rpc DelUser(DelUserRequest ) returns (DelUserReply);
 }
 
 message GetUserRequest {
-  string guid = 1;
+  string uidFB = 1;
 }
 message GetUserReply {
   string name = 1;
-  string guid = 2;
+  string uidFB = 2;
 }
 
 message GetUsersRequest {
@@ -28,7 +28,7 @@ message GetUsersReply {
 }
 
 message AddUserRequest {
-  string guid = 1;
+  string uidFB = 1;
   string name = 2;
   string token = 3;
 }
@@ -37,7 +37,7 @@ message AddUserReply {
 }
 
 message UpdateUserRequest {
-  string guid = 1;
+  string uidFB = 1;
   string name = 2;
   string token = 3;
 }
@@ -45,9 +45,9 @@ message UpdateUserReply {
   bool result = 1;
 }
 
-message RemoveUserRequest {
-  string guid = 1;
+message DelUserRequest {
+  string uidFB = 1;
 }
-message RemoveUserReply {
+message DelUserReply {
   bool result = 1;
 }
