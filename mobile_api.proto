@@ -2,6 +2,7 @@ syntax = "proto3";
 
 import "user.proto";
 import "company.proto";
+import "skill.proto";
 
 option csharp_namespace = "MobileApiGetway";
 
@@ -21,6 +22,11 @@ service MobileApi{
 	rpc ApiGetCompany (company.GetCompanyRequest) returns (company.GetCompanyReply);
 	rpc ApiGetCompanies(company.GetCompaniesRequest ) returns (company.GetCompaniesReply );
 	rpc ApiDelCompany(company.DelCompanyRequest ) returns (company.DelCompanyReply );
+
+	//SkillService
+	rpc ApiAddSkill(skill.AddSkillRequest)returns (skill.AddSkillReply);
+	rpc ApiGetSkills(skill.GetSkillsRequest ) returns (skill.GetSkillsReply );
+	rpc ApiDelSkill(skill.DelSkillRequest ) returns (skill.DelSkillReply );
 
 	//NotificationService
 	rpc ApiSendMessage(ApiSendMessageRequest) returns (ApiSendMessageReply);

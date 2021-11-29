@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "SkillService.Protos";
+
+package skill;
+
+service Skill {
+  rpc AddSkill(AddSkillRequest ) returns (AddSkillReply);
+  rpc GetSkills (GetSkillsRequest) returns (GetSkillsReply);
+  rpc GetSkill (GetSkillRequest) returns (GetSkillReply);
+  rpc UpdateSkill(UpdateSkillRequest ) returns (UpdateSkillReply);
+  rpc DelSkill(DelSkillRequest ) returns (DelSkillReply);
+}
+
+message AddSkillRequest {
+  string name = 1;
+  string desc = 2;
+}
+message AddSkillReply {
+  bool result  = 1;
+}
+
+message GetSkillsRequest {
+  string userGuid = 1;
+}
+message GetSkillsReply {
+  repeated string names = 1;
+  repeated string guids = 2;
+  repeated string desc = 3;
+}
+
+message GetSkillRequest {
+  string guid = 1;
+}
+message GetSkillReply {
+  string name = 1;
+  string guid = 2;
+}
+
+message UpdateSkillRequest {
+  string guid = 1;
+  string name = 2;
+}
+message UpdateSkillReply {
+  bool result = 1;
+}
+
+message DelSkillRequest {
+  string guid = 1;
+}
+message DelSkillReply {
+  bool result = 1;
+}
