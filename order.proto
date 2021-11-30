@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+option csharp_namespace = "OrderService.Protos";
+
+package order;
+
+service Order {
+  rpc AddOrder(AddOrderRequest ) returns (AddOrderReply);
+  rpc GetOrders (GetOrdersRequest) returns (GetOrdersReply);
+  rpc GetOrder (GetOrderRequest) returns (GetOrderReply);
+  rpc UpdateOrder(UpdateOrderRequest ) returns (UpdateOrderReply);
+  rpc DelOrder(DelOrderRequest ) returns (DelOrderReply);
+}
+
+message AddOrderRequest {
+  string name = 1;
+  string userName = 2;
+  string masterName = 3;
+  string skillName = 4;
+}
+message AddOrderReply {
+  bool result  = 1;
+}
+
+message GetOrdersRequest {
+  string userGuid = 1;
+}
+message GetOrdersReply {
+  repeated string names = 1;
+  repeated string guids = 2;
+  repeated string userNames = 3;
+  repeated string masterNames = 4;
+  repeated string skillNames = 5;
+}
+
+message GetOrderRequest {
+  string guid = 1;
+}
+message GetOrderReply {
+  string guid = 1;
+  string name = 2;
+}
+
+message UpdateOrderRequest {
+  string guid = 1;
+  string name = 2;
+}
+message UpdateOrderReply {
+  bool result = 1;
+}
+
+message DelOrderRequest {
+  string guid = 1;
+}
+message DelOrderReply {
+  bool result = 1;
+}
