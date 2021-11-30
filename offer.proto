@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+option csharp_namespace = "OfferService.Protos";
+
+package offer;
+
+service Offer {
+  rpc AddOffer(AddOfferRequest ) returns (AddOfferReply);
+  rpc GetOffers (GetOffersRequest) returns (GetOffersReply);
+  rpc GetOffer (GetOfferRequest) returns (GetOfferReply);
+  rpc UpdateOffer(UpdateOfferRequest ) returns (UpdateOfferReply);
+  rpc DelOffer(DelOfferRequest ) returns (DelOfferReply);
+}
+
+message AddOfferRequest {
+  string name = 1;
+  string masterName = 2;
+  string skillName = 3;
+}
+message AddOfferReply {
+  bool result  = 1;
+}
+
+message GetOffersRequest {
+  string userGuid = 1;
+}
+message GetOffersReply {
+  repeated string names = 1;
+  repeated string guids = 2;
+  repeated string masterNames = 3;
+  repeated string skillNames = 4;
+}
+
+message GetOfferRequest {
+  string guid = 1;
+}
+message GetOfferReply {
+  string guid = 1;
+  string name = 2;
+}
+
+message UpdateOfferRequest {
+  string guid = 1;
+  string name = 2;
+}
+message UpdateOfferReply {
+  bool result = 1;
+}
+
+message DelOfferRequest {
+  string guid = 1;
+}
+message DelOfferReply {
+  bool result = 1;
+}
