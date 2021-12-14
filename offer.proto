@@ -7,6 +7,8 @@ package offer;
 service Offer {
   rpc AddOffer(AddOfferRequest ) returns (AddOfferReply);
   rpc GetOffers (GetOffersRequest) returns (GetOffersReply);
+  rpc GetOffersByMaster (GetOffersByMasterRequest) returns (GetOffersReply);
+  rpc GetOffersBySkill (GetOffersBySkillRequest) returns (GetOffersReply);
   rpc GetOffer (GetOfferRequest) returns (GetOfferReply);
   rpc UpdateOffer(UpdateOfferRequest ) returns (UpdateOfferReply);
   rpc DelOffer(DelOfferRequest ) returns (DelOfferReply);
@@ -14,21 +16,32 @@ service Offer {
 
 message AddOfferRequest {
   string name = 1;
-  string masterName = 2;
-  string skillName = 3;
+  string masterGuid = 2;
+  string masterName = 3;
+  string skillGuid = 4;
+  string skillName = 5;
 }
 message AddOfferReply {
   bool result  = 1;
 }
 
 message GetOffersRequest {
-  string userGuid = 1;
 }
 message GetOffersReply {
   repeated string names = 1;
   repeated string guids = 2;
-  repeated string masterNames = 3;
-  repeated string skillNames = 4;
+  repeated string masterGuids = 3;
+  repeated string masterNames = 4;
+  repeated string skillGuids = 5;
+  repeated string skillNames = 6;
+}
+
+message GetOffersByMasterRequest {
+  string masterGuid = 1;
+}
+
+message GetOffersBySkillRequest {
+  string skillGuid = 1;
 }
 
 message GetOfferRequest {
