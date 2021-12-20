@@ -30,10 +30,12 @@ message GetOffersRequest {
 message GetOffersReply {
   repeated string names = 1;
   repeated string guids = 2;
-  repeated string masterGuids = 3;
-  repeated string masterNames = 4;
-  repeated string skillGuids = 5;
-  repeated string skillNames = 6;
+  repeated string orderGuids = 3;
+  repeated string masterGuids = 4;
+  repeated string masterNames = 5;
+  repeated string skillGuids = 6;
+  repeated string skillNames = 7;
+  repeated string statuses = 8;
 }
 
 message GetOffersByMasterRequest {

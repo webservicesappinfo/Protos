@@ -14,9 +14,13 @@ service Order {
 
 message AddOrderRequest {
   string name = 1;
-  string userName = 2;
-  string masterName = 3;
-  string skillName = 4;
+  string offerGuid = 2;
+  string userName = 3;
+  string masterName = 4;
+  string skillName = 5;
+  string userGuid = 6;
+  string masterGuid = 7;
+  string skillGuid = 8;
 }
 message AddOrderReply {
   bool result  = 1;
@@ -24,13 +28,19 @@ message AddOrderReply {
 
 message GetOrdersRequest {
   string userGuid = 1;
+  bool isMaster = 2;
 }
 message GetOrdersReply {
   repeated string names = 1;
   repeated string guids = 2;
-  repeated string userNames = 3;
-  repeated string masterNames = 4;
-  repeated string skillNames = 5;
+  repeated string offerGuids = 3;
+  repeated string userNames = 4;
+  repeated string masterNames = 5;
+  repeated string skillNames = 6;
+  repeated string userGuids = 7;
+  repeated string masterGuids = 8;
+  repeated string skillGuids = 9;
+  repeated string statuses = 10;
 }
 
 message GetOrderRequest {
