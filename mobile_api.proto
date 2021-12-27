@@ -5,6 +5,7 @@ import "company.proto";
 import "skill.proto";
 import "offer.proto";
 import "order.proto";
+import "notification.proto";
 
 option csharp_namespace = "MobileApiGetway";
 
@@ -42,29 +43,12 @@ service MobileApi{
 	rpc ApiDelOrder(order.DelOrderRequest ) returns (order.DelOrderReply );
 
 	//NotificationService
-	rpc ApiSendMessage(ApiSendMessageRequest) returns (ApiSendMessageReply);
-	rpc ApiFindLastMessage(ApiFindLastMessageRequest) returns (ApiFindLastMessagesReply);
+	rpc ApiSendMessage(notification.SendNotificationRequest) returns (notification.SendNotificationReply);
+	rpc ApiFindLastMessage(notification.FindLastGetMessageRequest) returns (notification.FindLastGetMessageReply);
 
 	//LocationService
 	rpc ApiGetUserLocation(ApiGetUserLocationRequest) returns (ApiGetUserLocationReply);
 	rpc ApiSetUserLocation(ApiSetUserLocationRequest) returns (ApiSetUserLocationReply);
-}
-
-//NotificationService
-message ApiFindLastMessageRequest{
-	string fromGuid  = 1;
-	string forGuid  = 2;
-}
-message ApiFindLastMessagesReply{
-	string msg = 1;
-}
-message ApiSendMessageRequest{
-	string forGuid = 1;
-	string fromGuid = 2;
-	string msg = 3;
-}
-message ApiSendMessageReply{
-	bool status = 1;
 }
 
 //LocationService
