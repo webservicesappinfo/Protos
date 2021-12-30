@@ -40,7 +40,8 @@ message GetOffersReply {
 
 message GetOffersByMasterRequest {
   string masterGuid = 1;
-  bool forMaster = 2;
+  string clientGuid = 2;
+  bool forMaster = 3;
 }
 
 message GetOffersBySkillRequest {
