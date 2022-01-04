@@ -26,6 +26,10 @@ message AddOfferReply {
 }
 
 message GetOffersRequest {
+  string masterGuid = 1;
+  string skillGuid = 2;
+  string clientGuid = 3;
+  bool forMaster = 4;
 }
 message GetOffersReply {
   repeated string names = 1;

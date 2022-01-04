@@ -33,6 +33,7 @@ service MobileApi{
 
 	//OfferService
 	rpc ApiAddOffer(offer.AddOfferRequest)returns (offer.AddOfferReply);
+	rpc ApiGetOffers(offer.GetOffersRequest) returns (offer.GetOffersReply);
 	rpc ApiGetOffersByMaster(offer.GetOffersByMasterRequest ) returns (offer.GetOffersReply );
 	rpc ApiGetOffersBySkill(offer.GetOffersBySkillRequest ) returns (offer.GetOffersReply );
 	rpc ApiDelOffer(offer.DelOfferRequest ) returns (offer.DelOfferReply );
