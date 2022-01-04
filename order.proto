@@ -10,6 +10,9 @@ service Order {
   rpc GetOrder (GetOrderRequest) returns (GetOrderReply);
   rpc UpdateOrder(UpdateOrderRequest ) returns (UpdateOrderReply);
   rpc DelOrder(DelOrderRequest ) returns (DelOrderReply);
+
+  rpc AcceptedOrder(AcceptedOrderRequest) returns(AcceptedOrderReply);
+  rpc ExecutedOrder(ExecutedOrderRequest) returns(ExecutedOrderReply);
 }
 
 message AddOrderRequest {
@@ -63,5 +66,22 @@ message DelOrderRequest {
   string guid = 1;
 }
 message DelOrderReply {
+  bool result = 1;
+}
+
+message AcceptedOrderRequest {
+  string guid = 1;
+}
+message AcceptedOrderReply {
+  bool result = 1;
+  string name = 2;
+  string clientGuid = 3;
+  string masterGuid = 4;
+}
+
+message ExecutedOrderRequest {
+  string guid = 1;  
+}
+message ExecutedOrderReply {
   bool result = 1;
 }

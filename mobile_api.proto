@@ -42,6 +42,8 @@ service MobileApi{
 	rpc ApiAddOrder(order.AddOrderRequest)returns (order.AddOrderReply);
 	rpc ApiGetOrders(order.GetOrdersRequest ) returns (order.GetOrdersReply );
 	rpc ApiDelOrder(order.DelOrderRequest ) returns (order.DelOrderReply );
+	rpc ApiAcceptedOrder(order.AcceptedOrderRequest) returns(order.AcceptedOrderReply);
+	rpc ApiExecutedOrder(order.ExecutedOrderRequest) returns(order.ExecutedOrderReply);
 
 	//NotificationService
 	rpc ApiSendMessage(notification.SendNotificationRequest) returns (notification.SendNotificationReply);
