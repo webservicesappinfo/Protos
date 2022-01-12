@@ -19,6 +19,10 @@ message GetCompanyRequest {
 message GetCompanyReply {
   string name = 1;
   string guid = 2;
+  string ownerGuid = 3;
+  string ownerName = 4;
+  repeated string masterGuids = 5;
+  repeated string masterNames = 6;
 }
 
 message GetCompaniesRequest {
