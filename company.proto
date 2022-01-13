@@ -36,7 +36,8 @@ message GetCompaniesReply {
 
 message AddCompanyRequest {
   string name = 1;
-  string userGuid = 2;
+  string ownerGuid = 2;
+  string ownerName = 3;
 }
 message AddCompanyReply {
   bool result  = 1;
