@@ -12,7 +12,10 @@ option csharp_namespace = "MobileApiGetway";
 package mobileApi;
 
 service MobileApi{
-   
+   //MobileApiService
+   rpc GetFitForCompanyUsers(GetFitForCompanyUsersRequest ) returns (GetFitForCompanyUsersReply);
+
+
   // UserRepoService
 	rpc ApiAddUser(user.AddUserRequest) returns (user.AddUserReply);
 	rpc ApiGetUser (user.GetUserRequest) returns (user.GetUserReply);
@@ -24,7 +27,7 @@ service MobileApi{
 	rpc ApiJoinToCompany(company.JoinToCompanyRequest) returns (company.JoinToCompanyReply);
 	rpc ApiGetCompany (company.GetCompanyRequest) returns (company.GetCompanyReply);
 	rpc ApiGetCompanies(company.GetCompaniesRequest ) returns (company.GetCompaniesReply );
-	rpc ApiDelCompany(company.DelCompanyRequest ) returns (company.DelCompanyReply );
+	rpc ApiDelCompany(company.DelCompanyRequest ) returns (company.DelCompanyReply );	
 
 	//SkillService
 	rpc ApiAddSkill(skill.AddSkillRequest)returns (skill.AddSkillReply);
@@ -52,6 +55,16 @@ service MobileApi{
 	//LocationService
 	rpc ApiGetUserLocation(ApiGetUserLocationRequest) returns (ApiGetUserLocationReply);
 	rpc ApiSetUserLocation(ApiSetUserLocationRequest) returns (ApiSetUserLocationReply);
+}
+
+//MobileApiService
+message GetFitForCompanyUsersRequest {
+  string companyGuid = 1;
+  bool isConsistIn = 2;
+}
+message GetFitForCompanyUsersReply {
+  repeated string guids = 1;
+  repeated string names = 2;
 }
 
 //LocationService

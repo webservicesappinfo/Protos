@@ -24,7 +24,8 @@ message GetUsersRequest {
   string restriction = 1;
 }
 message GetUsersReply {
-  repeated string names = 1;
+  repeated string uids = 1;
+  repeated string names = 2;
 }
 
 message AddUserRequest {

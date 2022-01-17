@@ -47,6 +47,7 @@ message JoinToCompanyRequest {
   string companyGuid = 1;
   string companyName = 2;
   string userGuid = 3;
+  string userName = 4;
 }
 message JoinToCompanyReply {
   bool result  = 1;
