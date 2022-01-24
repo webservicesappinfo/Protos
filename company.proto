@@ -11,6 +11,7 @@ service Company {
   rpc GetCompany (GetCompanyRequest) returns (GetCompanyReply);
   rpc UpdateCompany(UpdateCompanyRequest ) returns (UpdateCompanyReply);
   rpc DelCompany(DelCompanyRequest ) returns (DelCompanyReply);
+  rpc SetCompanyLocation(SetCompanyLocationRequest) returns (SetCompanyLocationReply);
 }
 
 message GetCompanyRequest {
@@ -21,8 +22,10 @@ message GetCompanyReply {
   string guid = 2;
   string ownerGuid = 3;
   string ownerName = 4;
-  repeated string masterGuids = 5;
-  repeated string masterNames = 6;
+  string lat = 5;
+  string lng = 6;
+  repeated string masterGuids = 7;
+  repeated string masterNames = 8;
 }
 
 message GetCompaniesRequest {
@@ -67,4 +70,13 @@ message DelCompanyRequest {
 }
 message DelCompanyReply {
   bool result = 1;
+}
+
+message SetCompanyLocationRequest{
+	string guid = 1;
+	double lat = 2;
+	double lng = 3;
+}
+message SetCompanyLocationReply{
+	bool result = 1;
 }

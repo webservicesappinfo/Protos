@@ -28,6 +28,7 @@ service MobileApi{
 	rpc ApiGetCompany (company.GetCompanyRequest) returns (company.GetCompanyReply);
 	rpc ApiGetCompanies(company.GetCompaniesRequest ) returns (company.GetCompaniesReply );
 	rpc ApiDelCompany(company.DelCompanyRequest ) returns (company.DelCompanyReply );	
+	rpc apiSetCompanyLocation(company.SetCompanyLocationRequest) returns(company.SetCompanyLocationReply);
 
 	//SkillService
 	rpc ApiAddSkill(skill.AddSkillRequest)returns (skill.AddSkillReply);
