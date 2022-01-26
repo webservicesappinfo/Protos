@@ -16,10 +16,12 @@ service Offer {
 
 message AddOfferRequest {
   string name = 1;
-  string masterGuid = 2;
-  string masterName = 3;
-  string skillGuid = 4;
-  string skillName = 5;
+  string companyGuid = 2;
+  string companyName = 3;
+  string masterGuid = 4;
+  string masterName = 5;
+  string skillGuid = 6;
+  string skillName = 7;
 }
 message AddOfferReply {
   bool result  = 1;
@@ -35,11 +37,13 @@ message GetOffersReply {
   repeated string names = 1;
   repeated string guids = 2;
   repeated string orderGuids = 3;
-  repeated string masterGuids = 4;
-  repeated string masterNames = 5;
-  repeated string skillGuids = 6;
-  repeated string skillNames = 7;
-  repeated string statuses = 8;
+  repeated string companyGuids = 4;
+  repeated string companyNames = 5;
+  repeated string masterGuids = 6;
+  repeated string masterNames = 7;
+  repeated string skillGuids = 8;
+  repeated string skillNames = 9;
+  repeated string statuses = 10;
 }
 
 message GetOffersByMasterRequest {
