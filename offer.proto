@@ -44,6 +44,8 @@ message GetOffersReply {
   repeated string skillGuids = 8;
   repeated string skillNames = 9;
   repeated string statuses = 10;
+  repeated string lats = 11;
+  repeated string lngs= 12;
 }
 
 message GetOffersByMasterRequest {
