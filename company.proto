@@ -1,16 +1,18 @@
 syntax = "proto3";
 
+import "msg.proto";
+
 option csharp_namespace = "CompanyService.Protos";
 
 package company;
 
 service Company {
-  rpc AddCompany(AddCompanyRequest ) returns (AddCompanyReply);
+  rpc AddCompany(msg.AddCompanyRequest ) returns (msg.AddCompanyReply);
   rpc JoinToCompany(JoinToCompanyRequest ) returns (JoinToCompanyReply);
   rpc GetCompanies(GetCompaniesRequest ) returns (GetCompaniesReply);
   rpc GetCompany (GetCompanyRequest) returns (GetCompanyReply);
   rpc UpdateCompany(UpdateCompanyRequest ) returns (UpdateCompanyReply);
-  rpc DelCompany(DelCompanyRequest ) returns (DelCompanyReply);
+  rpc DelCompany(msg.DelCompanyRequest ) returns (msg.DelCompanyReply);
   rpc SetCompanyLocation(SetCompanyLocationRequest) returns (SetCompanyLocationReply);
 }
 
@@ -18,14 +20,7 @@ message GetCompanyRequest {
   string guid = 1;
 }
 message GetCompanyReply {
-  string name = 1;
-  string guid = 2;
-  string ownerGuid = 3;
-  string ownerName = 4;
-  string lat = 5;
-  string lng = 6;
-  repeated string masterGuids = 7;
-  repeated string masterNames = 8;
+  msg.CompanyReply company = 1;
 }
 
 message GetCompaniesRequest {
@@ -33,17 +28,7 @@ message GetCompaniesRequest {
   string type = 2;
 }
 message GetCompaniesReply {
-  repeated string guids = 1;
-  repeated string names = 2;
-}
-
-message AddCompanyRequest {
-  string name = 1;
-  string ownerGuid = 2;
-  string ownerName = 3;
-}
-message AddCompanyReply {
-  bool result  = 1;
+  repeated msg.CompanyReply companies = 1;
 }
 
 message JoinToCompanyRequest {
@@ -62,13 +47,6 @@ message UpdateCompanyRequest {
   string token = 3;
 }
 message UpdateCompanyReply {
-  bool result = 1;
-}
-
-message DelCompanyRequest {
-  string guid = 1;
-}
-message DelCompanyReply {
   bool result = 1;
 }
 

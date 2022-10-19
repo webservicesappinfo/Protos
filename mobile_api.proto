@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+import "msg.proto";
 import "user.proto";
 import "company.proto";
 import "skill.proto";
@@ -13,21 +14,23 @@ package mobileApi;
 
 service MobileApi{
    //MobileApiService
+   rpc GetMainDataForUser(GetMainDataForUserRequest ) returns (GetMainDataForUserReply);
    rpc GetFitForCompanyUsers(GetFitForCompanyUsersRequest ) returns (GetFitForCompanyUsersReply);
+   rpc AddCompany(msg.AddCompanyRequest) returns (msg.AddCompanyReply);
+   rpc DelCompany(msg.DelCompanyRequest ) returns (msg.DelCompanyReply );
 
-
-  // UserRepoService
+   // UserService
 	rpc ApiAddUser(user.AddUserRequest) returns (user.AddUserReply);
 	rpc ApiGetUser (user.GetUserRequest) returns (user.GetUserReply);
 	rpc ApiGetUsers(user.GetUsersRequest ) returns (user.GetUsersReply );
 	rpc ApiDelUser(user.DelUserRequest ) returns (user.DelUserReply );
 
 	// CompanyService
-	rpc ApiAddCompany(company.AddCompanyRequest) returns (company.AddCompanyReply);
+	//rpc ApiAddCompany(company.AddCompanyRequest) returns (company.AddCompanyReply);
+	//rpc ApiDelCompany(company.DelCompanyRequest ) returns (company.DelCompanyReply );
 	rpc ApiJoinToCompany(company.JoinToCompanyRequest) returns (company.JoinToCompanyReply);
 	rpc ApiGetCompany (company.GetCompanyRequest) returns (company.GetCompanyReply);
 	rpc ApiGetCompanies(company.GetCompaniesRequest ) returns (company.GetCompaniesReply );
-	rpc ApiDelCompany(company.DelCompanyRequest ) returns (company.DelCompanyReply );	
 	rpc apiSetCompanyLocation(company.SetCompanyLocationRequest) returns(company.SetCompanyLocationReply);
 
 	//SkillService
@@ -59,6 +62,15 @@ service MobileApi{
 }
 
 //MobileApiService
+message GetMainDataForUserRequest{
+	string userGuid = 1;
+}
+message GetMainDataForUserReply{
+	string userName = 1;
+	string userUidFB = 2;
+	repeated msg.CompanyReply companies = 3;
+}
+
 message GetFitForCompanyUsersRequest {
   string companyGuid = 1;
   bool isConsistIn = 2;

@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "MobileApiGetway";
+
+package msg;
+
+//CompanyService
+message CompanyReply {
+  string name = 1;
+  string guid = 2;
+  string ownerGuid = 3;
+  string ownerName = 4;
+  string lat = 5;
+  string lng = 6;
+  repeated string masterGuids = 7;
+  repeated string masterNames = 8;
+}
+message AddCompanyRequest {
+  string name = 1;
+  string ownerGuid = 2;
+  string ownerName = 3;
+}
+message AddCompanyReply {
+  bool result  = 1;
+}
+message DelCompanyRequest {
+  string guid = 1;
+}
+message DelCompanyReply {
+  bool result = 1;
+}
