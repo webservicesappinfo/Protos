@@ -8,6 +8,9 @@ package company;
 
 service Company {
   rpc AddCompany(msg.AddCompanyRequest ) returns (msg.AddCompanyReply);
+  rpc AddMaster(msg.AddMasterRequest ) returns (msg.AddMasterReply);
+  rpc DelMaster(msg.DelMasterRequest ) returns (msg.DelMasterReply);
+
   rpc JoinToCompany(JoinToCompanyRequest ) returns (JoinToCompanyReply);
   rpc GetCompanies(GetCompaniesRequest ) returns (GetCompaniesReply);
   rpc GetCompany (GetCompanyRequest) returns (GetCompanyReply);
@@ -24,7 +27,7 @@ message GetCompanyReply {
 }
 
 message GetCompaniesRequest {
-  string userGuid = 1;
+  string userUIDFB = 1;
   string type = 2;
 }
 message GetCompaniesReply {
@@ -34,7 +37,7 @@ message GetCompaniesReply {
 message JoinToCompanyRequest {
   string companyGuid = 1;
   string companyName = 2;
-  string userGuid = 3;
+  string userUIDFB = 3;
   string userName = 4;
 }
 message JoinToCompanyReply {

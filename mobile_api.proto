@@ -4,7 +4,6 @@ import "msg.proto";
 import "user.proto";
 import "company.proto";
 import "skill.proto";
-import "offer.proto";
 import "order.proto";
 import "notification.proto";
 
@@ -18,6 +17,8 @@ service MobileApi{
    rpc GetFitForCompanyUsers(GetFitForCompanyUsersRequest ) returns (GetFitForCompanyUsersReply);
    rpc AddCompany(msg.AddCompanyRequest) returns (msg.AddCompanyReply);
    rpc DelCompany(msg.DelCompanyRequest ) returns (msg.DelCompanyReply );
+   rpc AddMaster(msg.AddMasterRequest) returns (msg.AddMasterReply);
+   rpc DelMaster(msg.DelMasterRequest ) returns (msg.DelMasterReply);
 
    // UserService
 	rpc ApiAddUser(user.AddUserRequest) returns (user.AddUserReply);
@@ -39,11 +40,11 @@ service MobileApi{
 	rpc ApiDelSkill(skill.DelSkillRequest ) returns (skill.DelSkillReply );
 
 	//OfferService
-	rpc ApiAddOffer(offer.AddOfferRequest)returns (offer.AddOfferReply);
-	rpc ApiGetOffers(offer.GetOffersRequest) returns (offer.GetOffersReply);
-	rpc ApiGetOffersByMaster(offer.GetOffersByMasterRequest ) returns (offer.GetOffersReply );
-	rpc ApiGetOffersBySkill(offer.GetOffersBySkillRequest ) returns (offer.GetOffersReply );
-	rpc ApiDelOffer(offer.DelOfferRequest ) returns (offer.DelOfferReply );
+	rpc AddOffer(msg.AddOfferRequest) returns (msg.AddOfferReply);
+	rpc DelOffer(msg.DelOfferRequest) returns (msg.DelOfferReply);
+
+	//rpc ApiAddOffer(offer.AddOfferRequest)returns (offer.AddOfferReply);
+	rpc ApiGetOffers(msg.GetOffersRequest) returns (msg.GetOffersReply);
 
 	//OrderService
 	rpc ApiAddOrder(order.AddOrderRequest)returns (order.AddOrderReply);
@@ -63,11 +64,11 @@ service MobileApi{
 
 //MobileApiService
 message GetMainDataForUserRequest{
-	string userGuid = 1;
+	string userUIDFB = 1;
 }
 message GetMainDataForUserReply{
 	string userName = 1;
-	string userUidFB = 2;
+	string userUIDFB = 2;
 	repeated msg.CompanyReply companies = 3;
 }
 

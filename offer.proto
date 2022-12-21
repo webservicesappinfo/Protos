@@ -1,82 +1,14 @@
 syntax = "proto3";
 
+import "msg.proto";
+
 option csharp_namespace = "OfferService.Protos";
 
 package offer;
 
 service Offer {
-  rpc AddOffer(AddOfferRequest ) returns (AddOfferReply);
-  rpc GetOffers (GetOffersRequest) returns (GetOffersReply);
-  rpc GetOffersByMaster (GetOffersByMasterRequest) returns (GetOffersReply);
-  rpc GetOffersBySkill (GetOffersBySkillRequest) returns (GetOffersReply);
-  rpc GetOffer (GetOfferRequest) returns (GetOfferReply);
-  rpc UpdateOffer(UpdateOfferRequest ) returns (UpdateOfferReply);
-  rpc DelOffer(DelOfferRequest ) returns (DelOfferReply);
-}
-
-message AddOfferRequest {
-  string name = 1;
-  string companyGuid = 2;
-  string companyName = 3;
-  string masterGuid = 4;
-  string masterName = 5;
-  string skillGuid = 6;
-  string skillName = 7;
-}
-message AddOfferReply {
-  bool result  = 1;
-}
-
-message GetOffersRequest {
-  string masterGuid = 1;
-  string skillGuid = 2;
-  string clientGuid = 3;
-  bool forMaster = 4;
-}
-message GetOffersReply {
-  repeated string names = 1;
-  repeated string guids = 2;
-  repeated string orderGuids = 3;
-  repeated string companyGuids = 4;
-  repeated string companyNames = 5;
-  repeated string masterGuids = 6;
-  repeated string masterNames = 7;
-  repeated string skillGuids = 8;
-  repeated string skillNames = 9;
-  repeated string statuses = 10;
-  repeated string lats = 11;
-  repeated string lngs= 12;
-}
-
-message GetOffersByMasterRequest {
-  string masterGuid = 1;
-  string clientGuid = 2;
-  bool forMaster = 3;
-}
-
-message GetOffersBySkillRequest {
-  string skillGuid = 1;
-}
-
-message GetOfferRequest {
-  string guid = 1;
-}
-message GetOfferReply {
-  string guid = 1;
-  string name = 2;
-}
-
-message UpdateOfferRequest {
-  string guid = 1;
-  string name = 2;
-}
-message UpdateOfferReply {
-  bool result = 1;
-}
-
-message DelOfferRequest {
-  string guid = 1;
-}
-message DelOfferReply {
-  bool result = 1;
+  rpc AddOffer(msg.AddOfferRequest ) returns (msg.AddOfferReply);
+  rpc GetOffers (msg.GetOffersRequest) returns (msg.GetOffersReply);
+  rpc GetOffer (msg.GetOfferRequest) returns (msg.GetOfferReply);
+  rpc DelOffer (msg.DelOfferRequest) returns (msg.DelOfferReply);
 }

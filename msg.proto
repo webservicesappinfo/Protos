@@ -12,8 +12,7 @@ message CompanyReply {
   string ownerName = 4;
   string lat = 5;
   string lng = 6;
-  repeated string masterGuids = 7;
-  repeated string masterNames = 8;
+  repeated MasterReply masters = 7;
 }
 message AddCompanyRequest {
   string name = 1;
@@ -23,9 +22,75 @@ message AddCompanyRequest {
 message AddCompanyReply {
   bool result  = 1;
 }
+
 message DelCompanyRequest {
   string guid = 1;
 }
 message DelCompanyReply {
   bool result = 1;
+}
+
+message AddMasterRequest{
+	MasterReply master = 1;
+}
+message AddMasterReply{
+	bool result = 1;
+}
+
+message DelMasterRequest{
+	MasterReply master = 1;
+}
+message DelMasterReply{
+	bool result = 1;
+}
+
+//UserService
+message MasterReply {
+  string uidFB = 1;
+  string name = 2;
+  string companyGuid = 3;
+  string companyName = 4;
+  repeated OfferApi offers= 5;
+}
+
+//OfferService
+message OfferApi{
+    string guid = 1;
+	string name = 2;
+    string desc = 3;
+    string companyGuid = 4;
+    string companyName = 5;
+    string masterGuid = 6;
+    string masterName = 7;
+    string orderGuid = 8;
+    string skillGuid = 9;
+    string skillName = 10;
+    string status = 11;
+}
+
+message AddOfferRequest{
+    OfferApi offer = 1;
+}
+message AddOfferReply{
+    bool result = 1;
+}
+
+message GetOfferRequest{
+    string guid = 1;
+}
+message GetOfferReply{
+    OfferApi offer = 1;
+    bool result = 2;
+}
+message GetOffersRequest{
+    repeated string  guids = 1;
+}
+message GetOffersReply{
+    repeated OfferApi offers = 1;
+}
+message DelOfferRequest{
+    OfferApi offer = 1;
+}
+message DelOfferReply{
+    bool result = 1;
 }
