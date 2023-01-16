@@ -1,87 +1,14 @@
 syntax = "proto3";
 
+import "msg.proto";
+
 option csharp_namespace = "OrderService.Protos";
 
 package order;
 
 service Order {
-  rpc AddOrder(AddOrderRequest ) returns (AddOrderReply);
-  rpc GetOrders (GetOrdersRequest) returns (GetOrdersReply);
-  rpc GetOrder (GetOrderRequest) returns (GetOrderReply);
-  rpc UpdateOrder(UpdateOrderRequest ) returns (UpdateOrderReply);
-  rpc DelOrder(DelOrderRequest ) returns (DelOrderReply);
-
-  rpc AcceptedOrder(AcceptedOrderRequest) returns(AcceptedOrderReply);
-  rpc ExecutedOrder(ExecutedOrderRequest) returns(ExecutedOrderReply);
-}
-
-message AddOrderRequest {
-  string name = 1;
-  string offerGuid = 2;
-  string userName = 3;
-  string masterName = 4;
-  string skillName = 5;
-  string userGuid = 6;
-  string masterGuid = 7;
-  string skillGuid = 8;
-}
-message AddOrderReply {
-  bool result  = 1;
-}
-
-message GetOrdersRequest {
-  string userGuid = 1;
-  bool isMaster = 2;
-}
-message GetOrdersReply {
-  repeated string names = 1;
-  repeated string guids = 2;
-  repeated string offerGuids = 3;
-  repeated string userNames = 4;
-  repeated string masterNames = 5;
-  repeated string skillNames = 6;
-  repeated string userGuids = 7;
-  repeated string masterGuids = 8;
-  repeated string skillGuids = 9;
-  repeated string statuses = 10;
-}
-
-message GetOrderRequest {
-  string guid = 1;
-}
-message GetOrderReply {
-  string guid = 1;
-  string name = 2;
-}
-
-message UpdateOrderRequest {
-  string guid = 1;
-  string name = 2;
-}
-message UpdateOrderReply {
-  bool result = 1;
-}
-
-message DelOrderRequest {
-  string guid = 1;
-}
-message DelOrderReply {
-  bool result = 1;
-}
-
-message AcceptedOrderRequest {
-  string guid = 1;
-}
-message AcceptedOrderReply {
-  bool result = 1;
-  string name = 2;
-  string clientGuid = 3;
-  string masterGuid = 4;
-}
-
-message ExecutedOrderRequest {
-  string guid = 1;  
-}
-message ExecutedOrderReply {
-  bool result = 1;
+  rpc AddOrder(msg.AddOrderRequest ) returns (msg.AddOrderReply);
+  rpc GetOrders (msg.GetOrdersRequest) returns (msg.GetOrdersReply);
+  rpc GetOrder (msg.GetOrderRequest) returns (msg.GetOrderReply);
+  rpc DelOrder (msg.DelOrderRequest) returns (msg.DelOrderReply);
 }

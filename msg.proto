@@ -63,9 +63,10 @@ message OfferApi{
     string masterGuid = 6;
     string masterName = 7;
     string orderGuid = 8;
-    string skillGuid = 9;
-    string skillName = 10;
-    string status = 11;
+    string orderName = 9;
+    string skillGuid = 10;
+    string skillName = 11;
+    string status = 12;
 }
 
 message AddOfferRequest{
@@ -92,5 +93,46 @@ message DelOfferRequest{
     OfferApi offer = 1;
 }
 message DelOfferReply{
+    bool result = 1;
+}
+
+// OrderService
+message OrderApi {
+  string name = 1;
+  string guid = 2;
+  string offerGuid = 3;
+  string userName = 4;
+  string masterName = 5;
+  string skillName = 6;
+  string userGuid = 7;
+  string masterGuid = 8;
+  string skillGuid = 9;
+  string status = 10;
+}
+
+message AddOrderRequest{
+    OrderApi order = 1;
+}
+message AddOrderReply{
+    bool result = 1;
+}
+
+message GetOrderRequest{
+    string guid = 1;
+}
+message GetOrderReply{
+    OrderApi offer = 1;
+    bool result = 2;
+}
+message GetOrdersRequest{
+    repeated string  guids = 1;
+}
+message GetOrdersReply{
+    repeated OfferApi offers = 1;
+}
+message DelOrderRequest{
+    OrderApi order = 1;
+}
+message DelOrderReply{
     bool result = 1;
 }

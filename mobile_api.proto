@@ -4,7 +4,7 @@ import "msg.proto";
 import "user.proto";
 import "company.proto";
 import "skill.proto";
-import "order.proto";
+//import "order.proto";
 import "notification.proto";
 
 option csharp_namespace = "MobileApiGetway";
@@ -19,6 +19,10 @@ service MobileApi{
    rpc DelCompany(msg.DelCompanyRequest ) returns (msg.DelCompanyReply );
    rpc AddMaster(msg.AddMasterRequest) returns (msg.AddMasterReply);
    rpc DelMaster(msg.DelMasterRequest ) returns (msg.DelMasterReply);
+   rpc AddOffer(msg.AddOfferRequest) returns (msg.AddOfferReply);
+   rpc DelOffer(msg.DelOfferRequest) returns (msg.DelOfferReply);
+   rpc AddOrder(msg.AddOrderRequest) returns (msg.AddOrderReply);
+   rpc DelOrder(msg.DelOrderRequest) returns (msg.DelOrderReply);
 
    // UserService
 	rpc ApiAddUser(user.AddUserRequest) returns (user.AddUserReply);
@@ -40,18 +44,15 @@ service MobileApi{
 	rpc ApiDelSkill(skill.DelSkillRequest ) returns (skill.DelSkillReply );
 
 	//OfferService
-	rpc AddOffer(msg.AddOfferRequest) returns (msg.AddOfferReply);
-	rpc DelOffer(msg.DelOfferRequest) returns (msg.DelOfferReply);
-
 	//rpc ApiAddOffer(offer.AddOfferRequest)returns (offer.AddOfferReply);
 	rpc ApiGetOffers(msg.GetOffersRequest) returns (msg.GetOffersReply);
 
 	//OrderService
-	rpc ApiAddOrder(order.AddOrderRequest)returns (order.AddOrderReply);
+	/*rpc ApiAddOrder(order.AddOrderRequest)returns (order.AddOrderReply);
 	rpc ApiGetOrders(order.GetOrdersRequest ) returns (order.GetOrdersReply );
 	rpc ApiDelOrder(order.DelOrderRequest ) returns (order.DelOrderReply );
 	rpc ApiAcceptedOrder(order.AcceptedOrderRequest) returns(order.AcceptedOrderReply);
-	rpc ApiExecutedOrder(order.ExecutedOrderRequest) returns(order.ExecutedOrderReply);
+	rpc ApiExecutedOrder(order.ExecutedOrderRequest) returns(order.ExecutedOrderReply);*/
 
 	//NotificationService
 	rpc ApiSendMessage(notification.SendNotificationRequest) returns (notification.SendNotificationReply);
