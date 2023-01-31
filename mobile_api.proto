@@ -1,76 +1,58 @@
 syntax = "proto3";
 
-import "msg.proto";
-import "user.proto";
-import "company.proto";
-import "skill.proto";
-//import "order.proto";
-import "notification.proto";
+//import "msg.proto";
+//import "user.proto";
+//import "notification.proto";
 
 option csharp_namespace = "MobileApiGetway";
 
 package mobileApi;
 
-service MobileApi{
+service MobileApi {
    //MobileApiService
    rpc GetMainDataForUser(GetMainDataForUserRequest ) returns (GetMainDataForUserReply);
    rpc GetFitForCompanyUsers(GetFitForCompanyUsersRequest ) returns (GetFitForCompanyUsersReply);
-   rpc AddCompany(msg.AddCompanyRequest) returns (msg.AddCompanyReply);
-   rpc DelCompany(msg.DelCompanyRequest ) returns (msg.DelCompanyReply );
-   rpc AddMaster(msg.AddMasterRequest) returns (msg.AddMasterReply);
-   rpc DelMaster(msg.DelMasterRequest ) returns (msg.DelMasterReply);
-   rpc AddOffer(msg.AddOfferRequest) returns (msg.AddOfferReply);
-   rpc DelOffer(msg.DelOfferRequest) returns (msg.DelOfferReply);
-   rpc AddOrder(msg.AddOrderRequest) returns (msg.AddOrderReply);
-   rpc DelOrder(msg.DelOrderRequest) returns (msg.DelOrderReply);
 
    // UserService
-	rpc ApiAddUser(user.AddUserRequest) returns (user.AddUserReply);
-	rpc ApiGetUser (user.GetUserRequest) returns (user.GetUserReply);
-	rpc ApiGetUsers(user.GetUsersRequest ) returns (user.GetUsersReply );
-	rpc ApiDelUser(user.DelUserRequest ) returns (user.DelUserReply );
+	rpc ApiAddUser(AddUserRequest) returns (AddUserReply);
+	rpc ApiGetUser (GetUserRequest) returns (GetUserReply);
+	rpc ApiGetUsers(GetUsersRequest ) returns (GetUsersReply );
+	rpc ApiDelUser(DelUserRequest ) returns (DelUserReply );
 
-	// CompanyService
-	//rpc ApiAddCompany(company.AddCompanyRequest) returns (company.AddCompanyReply);
-	//rpc ApiDelCompany(company.DelCompanyRequest ) returns (company.DelCompanyReply );
-	rpc ApiJoinToCompany(company.JoinToCompanyRequest) returns (company.JoinToCompanyReply);
-	rpc ApiGetCompany (company.GetCompanyRequest) returns (company.GetCompanyReply);
-	rpc ApiGetCompanies(company.GetCompaniesRequest ) returns (company.GetCompaniesReply );
-	rpc apiSetCompanyLocation(company.SetCompanyLocationRequest) returns(company.SetCompanyLocationReply);
+   //CompanyService
+   rpc AddCompany(AddCompanyRequest) returns (AddCompanyReply);
+   rpc DelCompany(DelCompanyRequest ) returns (DelCompanyReply );
+   rpc AddMaster(AddMasterRequest) returns (AddMasterReply);
+   rpc DelMaster(DelMasterRequest ) returns (DelMasterReply);
 
-	//SkillService
-	rpc ApiAddSkill(skill.AddSkillRequest)returns (skill.AddSkillReply);
-	rpc ApiGetSkills(skill.GetSkillsRequest ) returns (skill.GetSkillsReply );
-	rpc ApiDelSkill(skill.DelSkillRequest ) returns (skill.DelSkillReply );
+   //OfferService
+   rpc AddOffer(AddOfferRequest) returns (AddOfferReply);
+   rpc DelOffer(DelOfferRequest) returns (DelOfferReply);
+   rpc ApiGetOffers(GetOffersRequest) returns (GetOffersReply);
 
-	//OfferService
-	//rpc ApiAddOffer(offer.AddOfferRequest)returns (offer.AddOfferReply);
-	rpc ApiGetOffers(msg.GetOffersRequest) returns (msg.GetOffersReply);
-
-	//OrderService
-	/*rpc ApiAddOrder(order.AddOrderRequest)returns (order.AddOrderReply);
-	rpc ApiGetOrders(order.GetOrdersRequest ) returns (order.GetOrdersReply );
-	rpc ApiDelOrder(order.DelOrderRequest ) returns (order.DelOrderReply );
-	rpc ApiAcceptedOrder(order.AcceptedOrderRequest) returns(order.AcceptedOrderReply);
-	rpc ApiExecutedOrder(order.ExecutedOrderRequest) returns(order.ExecutedOrderReply);*/
+   //OrderService
+   rpc AddOrder(AddOrderRequest) returns (AddOrderReply);
+   rpc DelOrder(DelOrderRequest) returns (DelOrderReply);
+   //rpc ApiAcceptedOrder(order.AcceptedOrderRequest) returns(order.AcceptedOrderReply);
+   //rpc ApiExecutedOrder(order.ExecutedOrderRequest) returns(order.ExecutedOrderReply);
 
 	//NotificationService
-	rpc ApiSendMessage(notification.SendNotificationRequest) returns (notification.SendNotificationReply);
-	rpc ApiFindLastMessage(notification.FindLastGetMessageRequest) returns (notification.FindLastGetMessageReply);
+	rpc ApiSendMessage(SendNotificationRequest) returns (SendNotificationReply);
+	rpc ApiFindLastMessage(FindLastGetMessageRequest) returns (FindLastGetMessageReply);
 
 	//LocationService
 	rpc ApiGetUserLocation(ApiGetUserLocationRequest) returns (ApiGetUserLocationReply);
 	rpc ApiSetUserLocation(ApiSetUserLocationRequest) returns (ApiSetUserLocationReply);
 }
 
-//MobileApiService
+//==== MobileApiService =============
 message GetMainDataForUserRequest{
 	string userUIDFB = 1;
 }
 message GetMainDataForUserReply{
 	string userName = 1;
 	string userUIDFB = 2;
-	repeated msg.CompanyReply companies = 3;
+	repeated CompanyReply companies = 3;
 }
 
 message GetFitForCompanyUsersRequest {
@@ -81,8 +63,204 @@ message GetFitForCompanyUsersReply {
   repeated string guids = 1;
   repeated string names = 2;
 }
+//====================================
 
-//LocationService
+//========= UserService ===========
+message MasterReply {
+  string uidFB = 1;
+  string name = 2;
+  string companyGuid = 3;
+  string companyName = 4;
+  repeated OfferApi offers= 5;
+}
+
+message GetUserRequest {
+  string uidFB = 1;
+}
+message GetUserReply {
+  string name = 1;
+  string uidFB = 2;
+}
+
+message GetUsersRequest {
+  string restriction = 1;
+}
+message GetUsersReply {
+  repeated string uids = 1;
+  repeated string names = 2;
+}
+
+message AddUserRequest {
+  string uidFB = 1;
+  string name = 2;
+  string token = 3;
+}
+message AddUserReply {
+  bool result  = 1;
+}
+
+message UpdateUserRequest {
+  string uidFB = 1;
+  string name = 2;
+  string token = 3;
+}
+message UpdateUserReply {
+  bool result = 1;
+}
+
+message DelUserRequest {
+  string uidFB = 1;
+}
+message DelUserReply {
+  bool result = 1;
+}
+//================================
+
+//== CompanyService =============
+message CompanyReply {
+  string name = 1;
+  string guid = 2;
+  string ownerGuid = 3;
+  string ownerName = 4;
+  string lat = 5;
+  string lng = 6;
+  repeated MasterReply masters = 7;
+}
+message AddCompanyRequest {
+  string name = 1;
+  string ownerGuid = 2;
+  string ownerName = 3;
+}
+message AddCompanyReply {
+  bool result  = 1;
+}
+
+message DelCompanyRequest {
+  string guid = 1;
+}
+message DelCompanyReply {
+  bool result = 1;
+}
+message AddMasterRequest{
+	MasterReply master = 1;
+}
+message AddMasterReply{
+	bool result = 1;
+}
+message DelMasterRequest{
+	MasterReply master = 1;
+}
+message DelMasterReply{
+	bool result = 1;
+}
+//=====================================
+
+//=== OfferService ====================
+message OfferApi{
+    string guid = 1;
+	string name = 2;
+    string desc = 3;
+    string companyGuid = 4;
+    string companyName = 5;
+    string masterGuid = 6;
+    string masterName = 7;
+    string orderGuid = 8;
+    string orderName = 9;
+    string skillGuid = 10;
+    string skillName = 11;
+    string status = 12;
+}
+
+message AddOfferRequest{
+    OfferApi offer = 1;
+}
+message AddOfferReply{
+    bool result = 1;
+}
+
+message GetOfferRequest{
+    string guid = 1;
+}
+message GetOfferReply{
+    OfferApi offer = 1;
+    bool result = 2;
+}
+message GetOffersRequest{
+    repeated string  guids = 1;
+}
+message GetOffersReply{
+    repeated OfferApi offers = 1;
+}
+message DelOfferRequest{
+    OfferApi offer = 1;
+}
+message DelOfferReply{
+    bool result = 1;
+}
+//==============================
+
+//==== OrderService ============
+message OrderApi {
+  string name = 1;
+  string guid = 2;
+  string offerGuid = 3;
+  string userName = 4;
+  string masterName = 5;
+  string skillName = 6;
+  string userGuid = 7;
+  string masterGuid = 8;
+  string skillGuid = 9;
+  string status = 10;
+}
+
+message AddOrderRequest{
+    OrderApi order = 1;
+}
+message AddOrderReply{
+    bool result = 1;
+}
+
+message GetOrderRequest{
+    string guid = 1;
+}
+message GetOrderReply{
+    OrderApi offer = 1;
+    bool result = 2;
+}
+message GetOrdersRequest{
+    repeated string  guids = 1;
+}
+message GetOrdersReply{
+    repeated OfferApi offers = 1;
+}
+message DelOrderRequest{
+    OrderApi order = 1;
+}
+message DelOrderReply{
+    bool result = 1;
+}
+//=============================
+
+//=== Notification ==================
+message FindLastGetMessageRequest{
+	string fromGuid  = 1;
+	string forGuid  = 2;
+}
+message FindLastGetMessageReply{
+	string msg = 1;
+}
+
+message SendNotificationRequest{
+	string forGuid = 1;
+	string fromGuid = 2;
+	string msg = 3;
+}
+
+message SendNotificationReply{
+	bool status = 1;
+}
+
+//=== LocationService ===================
 message ApiGetUserLocationRequest{
 	string guid  = 1;
 }
@@ -102,3 +280,4 @@ message ApiSetUserLocationRequest{
 message ApiSetUserLocationReply{
 	bool result = 1;
 }
+//=====================================

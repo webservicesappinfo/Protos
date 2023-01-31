@@ -1,14 +1,14 @@
 syntax = "proto3";
 
-import "msg.proto";
+import "mobile_api.proto";
 
 option csharp_namespace = "OfferService.Protos";
 
 package offer;
 
 service Offer {
-  rpc AddOffer(msg.AddOfferRequest ) returns (msg.AddOfferReply);
-  rpc GetOffers (msg.GetOffersRequest) returns (msg.GetOffersReply);
-  rpc GetOffer (msg.GetOfferRequest) returns (msg.GetOfferReply);
-  rpc DelOffer (msg.DelOfferRequest) returns (msg.DelOfferReply);
+  rpc AddOffer(mobileApi.AddOfferRequest ) returns (mobileApi.AddOfferReply);
+  rpc GetOffers (mobileApi.GetOffersRequest) returns (mobileApi.GetOffersReply);
+  rpc GetOffer (mobileApi.GetOfferRequest) returns (mobileApi.GetOfferReply);
+  rpc DelOffer (mobileApi.DelOfferRequest) returns (mobileApi.DelOfferReply);
 }

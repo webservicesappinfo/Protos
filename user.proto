@@ -1,54 +1,15 @@
 syntax = "proto3";
 
+import "mobile_api.proto";
+
 option csharp_namespace = "UserService.Protos";
 
 package user;
 
 service User {
-  rpc GetUser (GetUserRequest) returns (GetUserReply);
-  rpc AddUser(AddUserRequest ) returns (AddUserReply);
-  rpc GetUsers(GetUsersRequest ) returns (GetUsersReply);
-  rpc UpdateUser(UpdateUserRequest ) returns (UpdateUserReply);
-  rpc DelUser(DelUserRequest ) returns (DelUserReply);
-}
-
-message GetUserRequest {
-  string uidFB = 1;
-}
-message GetUserReply {
-  string name = 1;
-  string uidFB = 2;
-}
-
-message GetUsersRequest {
-  string restriction = 1;
-}
-message GetUsersReply {
-  repeated string uids = 1;
-  repeated string names = 2;
-}
-
-message AddUserRequest {
-  string uidFB = 1;
-  string name = 2;
-  string token = 3;
-}
-message AddUserReply {
-  bool result  = 1;
-}
-
-message UpdateUserRequest {
-  string uidFB = 1;
-  string name = 2;
-  string token = 3;
-}
-message UpdateUserReply {
-  bool result = 1;
-}
-
-message DelUserRequest {
-  string uidFB = 1;
-}
-message DelUserReply {
-  bool result = 1;
+  rpc GetUser (mobileApi.GetUserRequest) returns (mobileApi.GetUserReply);
+  rpc AddUser(mobileApi.AddUserRequest ) returns (mobileApi.AddUserReply);
+  rpc GetUsers(mobileApi.GetUsersRequest ) returns (mobileApi.GetUsersReply);
+  rpc UpdateUser(mobileApi.UpdateUserRequest ) returns (mobileApi.UpdateUserReply);
+  rpc DelUser(mobileApi.DelUserRequest ) returns (mobileApi.DelUserReply);
 }

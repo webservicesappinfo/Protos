@@ -1,14 +1,14 @@
 syntax = "proto3";
 
-import "msg.proto";
+import "mobile_api.proto";
 
 option csharp_namespace = "OrderService.Protos";
 
 package order;
 
 service Order {
-  rpc AddOrder(msg.AddOrderRequest ) returns (msg.AddOrderReply);
-  rpc GetOrders (msg.GetOrdersRequest) returns (msg.GetOrdersReply);
-  rpc GetOrder (msg.GetOrderRequest) returns (msg.GetOrderReply);
-  rpc DelOrder (msg.DelOrderRequest) returns (msg.DelOrderReply);
+  rpc AddOrder(mobileApi.AddOrderRequest ) returns (mobileApi.AddOrderReply);
+  rpc GetOrders (mobileApi.GetOrdersRequest) returns (mobileApi.GetOrdersReply);
+  rpc GetOrder (mobileApi.GetOrderRequest) returns (mobileApi.GetOrderReply);
+  rpc DelOrder (mobileApi.DelOrderRequest) returns (mobileApi.DelOrderReply);
 }

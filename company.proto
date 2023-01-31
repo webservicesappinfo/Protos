@@ -1,21 +1,21 @@
 syntax = "proto3";
 
-import "msg.proto";
+import "mobile_api.proto";
 
 option csharp_namespace = "CompanyService.Protos";
 
 package company;
 
 service Company {
-  rpc AddCompany(msg.AddCompanyRequest ) returns (msg.AddCompanyReply);
-  rpc AddMaster(msg.AddMasterRequest ) returns (msg.AddMasterReply);
-  rpc DelMaster(msg.DelMasterRequest ) returns (msg.DelMasterReply);
+  rpc AddCompany(mobileApi.AddCompanyRequest ) returns (mobileApi.AddCompanyReply);
+  rpc AddMaster(mobileApi.AddMasterRequest ) returns (mobileApi.AddMasterReply);
+  rpc DelMaster(mobileApi.DelMasterRequest ) returns (mobileApi.DelMasterReply);
 
   rpc JoinToCompany(JoinToCompanyRequest ) returns (JoinToCompanyReply);
   rpc GetCompanies(GetCompaniesRequest ) returns (GetCompaniesReply);
   rpc GetCompany (GetCompanyRequest) returns (GetCompanyReply);
   rpc UpdateCompany(UpdateCompanyRequest ) returns (UpdateCompanyReply);
-  rpc DelCompany(msg.DelCompanyRequest ) returns (msg.DelCompanyReply);
+  rpc DelCompany(mobileApi.DelCompanyRequest ) returns (mobileApi.DelCompanyReply);
   rpc SetCompanyLocation(SetCompanyLocationRequest) returns (SetCompanyLocationReply);
 }
 
@@ -23,7 +23,7 @@ message GetCompanyRequest {
   string guid = 1;
 }
 message GetCompanyReply {
-  msg.CompanyReply company = 1;
+  mobileApi.CompanyReply company = 1;
 }
 
 message GetCompaniesRequest {
@@ -31,7 +31,7 @@ message GetCompaniesRequest {
   string type = 2;
 }
 message GetCompaniesReply {
-  repeated msg.CompanyReply companies = 1;
+  repeated mobileApi.CompanyReply companies = 1;
 }
 
 message JoinToCompanyRequest {
